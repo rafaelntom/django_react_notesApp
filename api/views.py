@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Note
 from .serializer import NoteSerializer
+from django.shortcuts import get_object_or_404
 
 
 class getRoutes(APIView):
@@ -52,6 +53,6 @@ class getNotes(APIView):
 
 class getSingleNote(APIView):
     def get(self, request, note_id):
-        note = Note.objects.get(pk=note_id)
+        note = get_object_or_404(Note, pk=note_id)
         serializer = NoteSerializer(note)
         return Response(serializer.data)
