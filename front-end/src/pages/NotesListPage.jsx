@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./notes.css";
 import NoteCard from "../components/NoteCard";
 
 const NotesListPage = () => {
@@ -20,7 +19,11 @@ const NotesListPage = () => {
   };
 
   return (
-    <div>
+    <div className="notes">
+      <header className="notes-header">
+        <h2 className="notes-title">&#9782; Notes</h2>
+        <p className="notes-count">{notes.length}</p>
+      </header>
       <ul>
         {notes.map((note) => {
           return <NoteCard key={note.id} note={note} />;

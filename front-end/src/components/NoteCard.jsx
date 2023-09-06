@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NoteCard = ({ note }) => {
   function formatDate(inputDate) {
@@ -11,20 +12,11 @@ const NoteCard = ({ note }) => {
   }
 
   return (
-    <li key={note.id}>
-      <span>
-        <strong>Note id:</strong> {note.id}
-      </span>
-      <span>
-        <strong>Description:</strong> {note.body}
-      </span>
-      <span>
-        <strong>Created at:</strong> {formatDate(note.created)}
-      </span>
-      <span>
-        <strong>Updated at:</strong> {formatDate(note.updated)}
-      </span>
-    </li>
+    <Link to={`note/${note.id}/`} key={note.id}>
+      <div className="notes-list-item">
+        <h3>{note.body}</h3>
+      </div>
+    </Link>
   );
 };
 

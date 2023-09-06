@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import NotesListPage from "./pages/NotesListPage.jsx";
 import NotePage from "./pages/NotePage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "note/:id",
