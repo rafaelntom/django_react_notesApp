@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from .models import Note
 from .serializer import NoteSerializer
 from django.shortcuts import get_object_or_404
+import ipdb
 
 
 class getRoutes(APIView):
@@ -55,4 +56,20 @@ class getSingleNote(APIView):
     def get(self, request, note_id):
         note = get_object_or_404(Note, pk=note_id)
         serializer = NoteSerializer(note)
+        return Response(serializer.data)
+
+
+class updateNote(APIView):
+    def get(self, request, note_id):
+        note = get_object_or_404(Note, pk=note_id)
+        serializer = NoteSerializer(note)
+        return Response(serializer.data)
+
+    def patch(self, request, note_id):
+        note = get_object_or_404(Note, pk=note_id)
+
+        serializer = NoteSerializer(note, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+
         return Response(serializer.data)

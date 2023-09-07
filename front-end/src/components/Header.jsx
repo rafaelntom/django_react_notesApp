@@ -2,10 +2,8 @@ import React from "react";
 
 function Header() {
   return (
-    <header>
-      <nav>
-        <span>This is the header section</span>
-      </nav>
+    <header className="app-header">
+      <h1>Note List</h1>
     </header>
   );
 }
