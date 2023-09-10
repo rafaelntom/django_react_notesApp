@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NoteCard from "../components/NoteCard";
+import AddNoteButton from "../components/AddNoteButton";
 
 const NotesListPage = () => {
   let [notes, setNotes] = useState([]);
@@ -29,6 +30,7 @@ const NotesListPage = () => {
           return <NoteCard key={note.id} note={note} />;
         })}
       </ul>
+      <AddNoteButton />
     </div>
   );
 };
