@@ -87,3 +87,12 @@ class deleteNote(APIView):
         note = get_object_or_404(Note, pk=note_id)
         note.delete()
         return Response("Note was deleted", status=status.HTTP_204_NO_CONTENT)
+
+
+class createNote(APIView):
+    def post(self, request):
+        data = request.data
+        new_note = Note.objects.create(body=data["body"])
+        serializer = NoteSerializer(new_note, many=False)
+
+        return Response(serializer.data)

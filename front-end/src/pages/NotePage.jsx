@@ -43,8 +43,24 @@ const NotePage = () => {
     navigate("/");
   };
 
+  const createNote = async () => {
+    fetch(`http://127.0.0.1:8000/api/notes/create/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(note),
+    });
+  };
+
   const handleSubmit = () => {
-    updateNote();
+    if (!note.body && id !== "new") {
+      deleteNote();
+    } else if (id !== "new") {
+      updateNote();
+    } else if (id === "new" && note.body !== null) {
+      createNote();
+    }
     navigate("/");
   };
 
@@ -66,7 +82,9 @@ const NotePage = () => {
                   className="trash"
                 />
               ) : (
-                <span className="create-note">Create Note</span>
+                <span className="create-note" onClick={handleSubmit}>
+                  Create Note
+                </span>
               )}
             </h3>
           </header>
