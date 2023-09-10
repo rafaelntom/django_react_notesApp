@@ -21,6 +21,16 @@ const NotePage = () => {
     }
   };
 
+  const createNote = async () => {
+    fetch(`http://127.0.0.1:8000/api/notes/create/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(note),
+    });
+  };
+
   const updateNote = async () => {
     if (id === "new") return;
 
@@ -43,18 +53,8 @@ const NotePage = () => {
     navigate("/");
   };
 
-  const createNote = async () => {
-    fetch(`http://127.0.0.1:8000/api/notes/create/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(note),
-    });
-  };
-
   const handleSubmit = () => {
-    if (!note.body && id !== "new") {
+    if (note.body === "" && id !== "new") {
       deleteNote();
     } else if (id !== "new") {
       updateNote();
@@ -97,7 +97,7 @@ const NotePage = () => {
             onChange={(event) => {
               setNote({ ...note, body: event.target.value });
             }}
-            defaultValue={note?.body}
+            value={note?.body}
           ></textarea>
         </div>
       </div>

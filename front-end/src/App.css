@@ -65,6 +65,7 @@ a {
   background-color: var(--color-white);
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
   position: relative;
+  border-radius: 10px;
 }
 
 .app-header {
@@ -74,6 +75,7 @@ a {
   justify-content: space-between;
   background-color: var(--color-lighter);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px 0px 0px;
 }
 
 .app-header h1 {
@@ -139,6 +141,12 @@ a {
   margin-bottom: 12px;
   padding: 8px 16px;
   transition: all 0.2s ease-in-out;
+}
+
+.notes-list-item .note-info {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .notes-list-item:hover {
